@@ -1,0 +1,28 @@
+services:
+  styx-notify:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: styx-notify-connector
+    restart: unless-stopped
+    ports:
+      - "8769:8769"
+    environment:
+      - HTTP_PORT=8769
+      - HTTP_HOST=0.0.0.0
+      - NTFY_URL=${NTFY_URL:-}
+      - GOTIFY_URL=${GOTIFY_URL:-}
+      - GOTIFY_TOKEN=${GOTIFY_TOKEN:-}
+      - STYX_API_URL=http://host.docker.internal:3000
+      - STYX_ACCESS_KEY=${STYX_ACCESS_KEY:-styx-local-dev-key}
+      - LOG_LEVEL=info
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+      - styx_default
+
+networks:
+  default:
+  styx_default:
+    external: true

@@ -1,0 +1,31 @@
+{
+  "name": "@styx-tools/notify",
+  "version": "1.0.0",
+  "description": "Local & Private Notification MCP Tool for Styx Agent OS (ntfy, Gotify, desktop, local webhooks)",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "styx-notify": "./bin/styx-notify"
+  },
+  "scripts": {
+    "start": "node src/index.js daemon",
+    "test": "node tests/notify.test.js"
+  },
+  "keywords": [
+    "styx",
+    "notifications",
+    "ntfy",
+    "gotify",
+    "local-notifications",
+    "mcp",
+    "agent-os"
+  ],
+  "author": "Styx Community",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pino": "^9.6.0"
+  }
+}

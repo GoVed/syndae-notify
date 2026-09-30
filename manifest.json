@@ -1,0 +1,19 @@
+{
+  "name": "notify",
+  "display_name": "Local Device Notifications",
+  "version": "1.0.0",
+  "description": "100% Local & Private Notification MCP Tool (Zero Cloud, ntfy, Gotify, desktop, local webhooks)",
+  "container_name": "styx-notify-connector",
+  "port": 8769,
+  "protocol": "notify",
+  "instructions_file": "instructions.md",
+  "has_docker": true,
+  "tools": [
+    {
+      "name": "send_notification",
+      "description": "Send a local push notification directly to the operator's device or desktop without external cloud services (supports ntfy, Gotify, desktop alert, local webhooks)",
+      "risk_level": "LOW",
+      "policy": "AUTONOMOUS"
+    }
+  ]
+}
