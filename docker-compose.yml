@@ -1,9 +1,9 @@
 services:
-  styx-notify:
+  syndae-notify:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: styx-notify-connector
+    container_name: syndae-notify-connector
     restart: unless-stopped
     ports:
       - "8769:8769"
@@ -13,16 +13,16 @@ services:
       - NTFY_URL=${NTFY_URL:-}
       - GOTIFY_URL=${GOTIFY_URL:-}
       - GOTIFY_TOKEN=${GOTIFY_TOKEN:-}
-      - STYX_API_URL=http://host.docker.internal:3000
-      - STYX_ACCESS_KEY=${STYX_ACCESS_KEY:-styx-local-dev-key}
+      - SYNDAE_API_URL=http://host.docker.internal:3000
+      - SYNDAE_ACCESS_KEY=${SYNDAE_ACCESS_KEY:-syndae-local-dev-key}
       - LOG_LEVEL=info
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
       - default
-      - styx_default
+      - syndae_default
 
 networks:
   default:
-  styx_default:
+  syndae_default:
     external: true

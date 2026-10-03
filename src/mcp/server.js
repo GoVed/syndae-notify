@@ -4,7 +4,7 @@ import logger from '../utils/logger.js';
 import config from '../config.js';
 
 export const SERVER_INFO = {
-  name: 'styx-notify-server',
+  name: 'syndae-notify-server',
   version: '1.0.0'
 };
 
@@ -12,8 +12,8 @@ const dispatcher = new LocalNotificationDispatcher({
   ntfyUrl: config.ntfyUrl,
   gotifyUrl: config.gotifyUrl,
   gotifyToken: config.gotifyToken,
-  styxUrl: config.styxApiUrl,
-  styxAccessKey: config.styxAccessKey,
+  syndaeUrl: config.syndaeApiUrl,
+  syndaeAccessKey: config.syndaeAccessKey,
 });
 
 /**

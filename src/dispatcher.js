@@ -8,13 +8,13 @@ export class LocalNotificationDispatcher {
     this.ntfyUrl = config.ntfyUrl || process.env.NTFY_URL || null;
     this.gotifyUrl = config.gotifyUrl || process.env.GOTIFY_URL || null;
     this.gotifyToken = config.gotifyToken || process.env.GOTIFY_TOKEN || null;
-    this.styxUrl = config.styxUrl || process.env.STYX_URL || 'http://localhost:3000';
-    this.styxAccessKey = config.styxAccessKey || process.env.STYX_ACCESS_KEY || 'styx-local-dev-key';
+    this.syndaeUrl = config.syndaeUrl || process.env.SYNDAE_URL || 'http://localhost:3000';
+    this.syndaeAccessKey = config.syndaeAccessKey || process.env.SYNDAE_ACCESS_KEY || 'syndae-local-dev-key';
   }
 
   async send(params) {
     const {
-      title = 'Styx Notification',
+      title = 'Syndae Notification',
       message = '',
       urgency = 'info',
       endpoint = null,
@@ -92,15 +92,15 @@ export class LocalNotificationDispatcher {
       // Ignore if notify-send is not installed or running headlessly in container
     }
 
-    // 4. Styx inbound webhook relay (if Styx is running)
-    if (this.styxUrl) {
+    // 4. Syndae inbound webhook relay (if Syndae is running)
+    if (this.syndaeUrl) {
       try {
-        const triggerUrl = `${this.styxUrl.replace(/\/$/, '')}/api/tools/trigger`;
+        const triggerUrl = `${this.syndaeUrl.replace(/\/$/, '')}/api/tools/trigger`;
         const res = await fetch(triggerUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.styxAccessKey}`,
+            'Authorization': `Bearer ${this.syndaeAccessKey}`,
           },
           body: JSON.stringify({
             protocol: 'notify',
@@ -116,10 +116,10 @@ export class LocalNotificationDispatcher {
           }),
         });
         if (res.ok) {
-          results.delivered_to.push('styx_inbound_stream');
+          results.delivered_to.push('syndae_inbound_stream');
         }
       } catch {
-        // Styx relay is optional
+        // Syndae relay is optional
       }
     }
 

@@ -5,8 +5,8 @@ import { LocalNotificationDispatcher } from './dispatcher.js';
 const program = new Command();
 
 program
-  .name('styx-notify')
-  .description('Styx Local Notifications MCP Tool')
+  .name('syndae-notify')
+  .description('Syndae Local Notifications MCP Tool')
   .version('1.0.0');
 
 program
@@ -19,7 +19,7 @@ program
 program
   .command('send <message>')
   .description('Send a notification from CLI')
-  .option('-t, --title <title>', 'Notification title', 'Styx Notification')
+  .option('-t, --title <title>', 'Notification title', 'Syndae Notification')
   .option('-u, --urgency <urgency>', 'Urgency (info|action_required|alert)', 'info')
   .option('-e, --endpoint <url>', 'ntfy or custom webhook endpoint')
   .action(async (message, opts) => {

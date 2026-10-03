@@ -3,7 +3,7 @@
   "display_name": "Local Device Notifications",
   "version": "1.0.0",
   "description": "100% Local & Private Notification MCP Tool (Zero Cloud, ntfy, Gotify, desktop, local webhooks)",
-  "container_name": "styx-notify-connector",
+  "container_name": "syndae-notify-connector",
   "port": 8769,
   "protocol": "notify",
   "instructions_file": "instructions.md",

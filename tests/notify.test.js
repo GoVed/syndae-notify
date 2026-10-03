@@ -36,7 +36,7 @@ test('Local Notification Dispatcher', async (t) => {
 
     await new Promise(resolve => mockNtfyServer.listen(0, '127.0.0.1', resolve));
     const port = mockNtfyServer.address().port;
-    const ntfyUrl = `http://127.0.0.1:${port}/styx-alerts`;
+    const ntfyUrl = `http://127.0.0.1:${port}/syndae-alerts`;
 
     try {
       const dispatcher = new LocalNotificationDispatcher({ ntfyUrl });
@@ -69,7 +69,7 @@ test('MCP Protocol JSON-RPC 2.0 Handler', async (t) => {
     const res = await handleJsonRpc(req);
     assert.strictEqual(res.id, 1);
     assert.strictEqual(res.result.protocolVersion, '2024-11-05');
-    assert.strictEqual(res.result.serverInfo.name, 'styx-notify-server');
+    assert.strictEqual(res.result.serverInfo.name, 'syndae-notify-server');
   });
 
   await t.test('handles tools/list returning send_notification', async () => {
@@ -112,7 +112,7 @@ test('HTTP Server & REST Endpoints', async (t) => {
     assert.strictEqual(health.status, 'healthy');
 
     const status = await fetch(`${baseUrl}/status`).then(r => r.json());
-    assert.strictEqual(status.server.name, 'styx-notify-server');
+    assert.strictEqual(status.server.name, 'syndae-notify-server');
 
     const mcpRes = await fetch(`${baseUrl}/mcp`, {
       method: 'POST',

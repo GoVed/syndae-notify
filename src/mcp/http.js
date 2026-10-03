@@ -14,8 +14,8 @@ const dispatcher = new LocalNotificationDispatcher({
   ntfyUrl: config.ntfyUrl,
   gotifyUrl: config.gotifyUrl,
   gotifyToken: config.gotifyToken,
-  styxUrl: config.styxApiUrl,
-  styxAccessKey: config.styxAccessKey,
+  syndaeUrl: config.syndaeApiUrl,
+  syndaeAccessKey: config.syndaeAccessKey,
 });
 
 /**
@@ -29,7 +29,7 @@ export function createHttpApp() {
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Styx-Access-Key');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Syndae-Access-Key');
     if (req.method === 'OPTIONS') return res.sendStatus(204);
     next();
   });
@@ -117,7 +117,7 @@ export async function startHttpServer(options = {}) {
     const server = app.listen(port, host, () => {
       logger.info(
         { port, host },
-        `Styx Notify MCP HTTP Server listening at http://${host}:${port}`
+        `Syndae Notify MCP HTTP Server listening at http://${host}:${port}`
       );
       resolve({ server, app, port, host });
     });

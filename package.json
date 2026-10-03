@@ -1,18 +1,18 @@
 {
-  "name": "@styx-tools/notify",
+  "name": "@syndae-tools/notify",
   "version": "1.0.0",
-  "description": "Local & Private Notification MCP Tool for Styx Agent OS (ntfy, Gotify, desktop, local webhooks)",
+  "description": "Local & Private Notification MCP Tool for Syndae Agent OS (ntfy, Gotify, desktop, local webhooks)",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "styx-notify": "./bin/styx-notify"
+    "syndae-notify": "./bin/syndae-notify"
   },
   "scripts": {
     "start": "node src/index.js daemon",
     "test": "node tests/notify.test.js"
   },
   "keywords": [
-    "styx",
+    "syndae",
     "notifications",
     "ntfy",
     "gotify",
@@ -20,7 +20,7 @@
     "mcp",
     "agent-os"
   ],
-  "author": "Styx Community",
+  "author": "Syndae Community",
   "license": "MIT",
   "dependencies": {
     "commander": "^13.1.0",
